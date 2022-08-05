@@ -15,9 +15,7 @@ namespace TrailerMovieAPI.Core.Application.ViewModel.User
         [Required(ErrorMessage = "LastName is Required")]
         [DataType(DataType.Text)]
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Documents is Required")]
-        [DataType(DataType.Text)]
-        public string Documents { get; set; }
+
         [Required(ErrorMessage = "Email is Required")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
@@ -33,13 +31,10 @@ namespace TrailerMovieAPI.Core.Application.ViewModel.User
         [DataType(DataType.Password)]
         [Compare(nameof(Password),ErrorMessage ="Password doesn't matches.")]
         public string ConfirmPassword { get; set; }
+
         [Required(ErrorMessage = "Phone is Required")]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
-        public string UserType { get; set; }
-
-        [DataType(DataType.Currency)]
-        public double? Amount { get; set; }
         public string Error { get; set; }
         public bool HasError { get; set; }
 

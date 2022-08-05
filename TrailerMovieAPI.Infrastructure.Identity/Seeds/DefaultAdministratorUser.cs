@@ -11,14 +11,13 @@ namespace TrailerMovieAPI.Infrastructure.Identity.Seeds
 {
     public class DefaultAdministratorUser
     {
-        public static async Task SeedAsync(UserManager<RestaurantUsers> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedAsync(UserManager<Users> userManager, RoleManager<IdentityRole> roleManager)
         {
-            RestaurantUsers adminUser = new() {
+            Users adminUser = new() {
                 UserName = "DefaultAdmin",
                 Name = "Jean",
                 LastName = "Reyes",
                 Email = "jreyes@TrailerMovieAPI.com.do",
-                Documents = "402-0000000-4",
                 EmailConfirmed = true,
                 PhoneNumber="+1 809 935 0913",
                 PhoneNumberConfirmed = true

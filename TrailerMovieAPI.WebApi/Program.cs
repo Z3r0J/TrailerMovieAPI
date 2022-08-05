@@ -25,13 +25,11 @@ namespace TrailerMovieAPI.WebApi
 
                 try
                 {
-                    var userManager = services.GetRequiredService<UserManager<RestaurantUsers>>();
+                    var userManager = services.GetRequiredService<UserManager<Users>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-                    await DefaultRoles.SeedAsync(userManager, roleManager);
                     await DefaultAdministratorUser.SeedAsync(userManager, roleManager);
-                    await DefaultSuperAdminUser.SeedAsync(userManager, roleManager);
-                    await DefaultWaiterUser.SeedAsync(userManager, roleManager);
+                    await DefaultRoles.SeedAsync(userManager, roleManager);
                 }
                 catch (Exception ex)
                 {
