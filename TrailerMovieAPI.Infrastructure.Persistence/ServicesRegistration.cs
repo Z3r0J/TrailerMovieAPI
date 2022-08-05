@@ -31,6 +31,7 @@ namespace TrailerMovieAPI.Infrastructure.Persistence
 
             service.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             service.AddTransient<IActorRepository, ActorRepository>();
+            service.AddTransient<IDirectorRepository, DirectorRepository>();
             #endregion
         }
 

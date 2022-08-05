@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrailerMovieAPI.Core.Application.ViewModel.User;
 using TrailerMovieAPI.Core.Application.DTOS.Actor;
+using TrailerMovieAPI.Core.Application.DTOS.Director;
 
 namespace TrailerMovieAPI.Core.Application.Mapping
 {
@@ -28,6 +29,22 @@ namespace TrailerMovieAPI.Core.Application.Mapping
                 .ForMember(x => x.Movies, opt => opt.Ignore());
 
             CreateMap<Actor, RegisterActorRequest>()
+                .ReverseMap()
+                .ForMember(x => x.Created, opt => opt.Ignore())
+                .ForMember(x => x.Modified, opt => opt.Ignore())
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.ModifiedBy, opt => opt.Ignore())
+                .ForMember(x => x.Movies, opt => opt.Ignore());
+
+            CreateMap<Director, DirectorResponse>()
+                .ReverseMap()
+                .ForMember(x => x.Created, opt => opt.Ignore())
+                .ForMember(x => x.Modified, opt => opt.Ignore())
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.ModifiedBy, opt => opt.Ignore())
+                .ForMember(x => x.Movies, opt => opt.Ignore());
+
+            CreateMap<Director, RegisterDirectorRequest>()
                 .ReverseMap()
                 .ForMember(x => x.Created, opt => opt.Ignore())
                 .ForMember(x => x.Modified, opt => opt.Ignore())
