@@ -28,7 +28,6 @@
 
   <ItemGroup>
     <Folder Include="DTOS\Movie\" />
-    <Folder Include="DTOS\Category\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
 

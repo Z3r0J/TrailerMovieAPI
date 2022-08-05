@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using TrailerMovieAPI.Core.Application.ViewModel.User;
 using TrailerMovieAPI.Core.Application.DTOS.Actor;
 using TrailerMovieAPI.Core.Application.DTOS.Director;
+using TrailerMovieAPI.Core.Application.DTOS.Category;
 
 namespace TrailerMovieAPI.Core.Application.Mapping
 {
@@ -51,6 +52,23 @@ namespace TrailerMovieAPI.Core.Application.Mapping
                 .ForMember(x => x.CreatedBy, opt => opt.Ignore())
                 .ForMember(x => x.ModifiedBy, opt => opt.Ignore())
                 .ForMember(x => x.Movies, opt => opt.Ignore());
+
+            CreateMap<MovieCategory,MovieCategoryResponse>()
+                .ReverseMap()
+                .ForMember(x => x.Created, opt => opt.Ignore())
+                .ForMember(x => x.Modified, opt => opt.Ignore())
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.ModifiedBy, opt => opt.Ignore())
+                .ForMember(x => x.Movies, opt => opt.Ignore());
+
+            CreateMap<MovieCategory,RegisterMovieCategoryRequest>()
+                .ReverseMap()
+                .ForMember(x => x.Created, opt => opt.Ignore())
+                .ForMember(x => x.Modified, opt => opt.Ignore())
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.ModifiedBy, opt => opt.Ignore())
+                .ForMember(x => x.Movies, opt => opt.Ignore());
+
 
         }
     }

@@ -16,6 +16,7 @@ namespace TrailerMovieAPI.Core.Application
             service.AddTransient(typeof(IGenericServices<,,>), typeof(GenericServices<,,>));
             service.AddTransient<IActorServices, ActorServices>();
             service.AddTransient<IDirectorServices, DirectorServices>();
+            service.AddTransient<IMovieCategoryServices, MovieCategoryServices>();
             #endregion
 
         }

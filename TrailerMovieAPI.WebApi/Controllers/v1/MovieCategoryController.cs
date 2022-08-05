@@ -2,36 +2,36 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using TrailerMovieAPI.Core.Application.DTOS.Actor;
+using TrailerMovieAPI.Core.Application.DTOS.Category;
 using TrailerMovieAPI.Core.Application.Interfaces.Services;
 
 namespace TrailerMovieAPI.WebApi.Controllers.v1
 {
     [ApiVersion("1.0")]
-    public class ActorController : BaseAPIController
+    public class MovieCategoryController : BaseAPIController
     {
-        private readonly IActorServices _actorServices;
-        public ActorController(IActorServices actorServices)
+        private readonly IMovieCategoryServices _movieCategoryServices;
+        public MovieCategoryController(IMovieCategoryServices movieCategoryServices)
         {
-            _actorServices = actorServices;
+            _movieCategoryServices = movieCategoryServices;
         }
 
         [HttpGet("Get")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ActorResponse))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MovieCategoryResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetActorAsync() {
+        public async Task<IActionResult> GetCategoryAsync() {
 
             try
             {
-                var actor = await _actorServices.GetAllViewModel();
+                var category = await _movieCategoryServices.GetAllViewModel();
 
-                if (actor == null || actor.Count == 0)
+                if (category == null || category.Count == 0)
                 {
                     return NotFound();
                 }
 
-                return Ok(actor);
+                return Ok(category);
             }
             catch (Exception ex)
             {
@@ -44,7 +44,7 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateAsync(RegisterActorRequest request) {
+        public async Task<IActionResult> CreateAsync(RegisterMovieCategoryRequest request) {
 
             try
             {
@@ -53,7 +53,7 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
                     return BadRequest();
                 }
 
-                var actor = await _actorServices.Add(request);
+                var actor = await _movieCategoryServices.Add(request);
 
                 return NoContent();
             }
@@ -65,10 +65,10 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
         }
 
         [HttpPut("Update/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK,Type =typeof(RegisterActorRequest))]
+        [ProducesResponseType(StatusCodes.Status200OK,Type =typeof(RegisterMovieCategoryRequest))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Update(int id,RegisterActorRequest request) {
+        public async Task<IActionResult> Update(int id,RegisterMovieCategoryRequest request) {
 
             try
             {
@@ -79,7 +79,7 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
 
                 request.Id = id;
 
-               await _actorServices.Update(request,id);
+               await _movieCategoryServices.Update(request,id);
 
                 return Ok(request);
             }
@@ -99,7 +99,7 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
             {
 
 
-               await _actorServices.Delete(id);
+               await _movieCategoryServices.Delete(id);
 
                 return NoContent();
             }
@@ -111,21 +111,21 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
         }
 
         [HttpGet("GetById/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ActorResponse))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MovieCategoryResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetById(int id) {
 
             try
             {
-                var actor = await _actorServices.GetByIdSaveViewModel(id);
+                var category = await _movieCategoryServices.GetByIdSaveViewModel(id);
 
-                if (actor == null )
+                if (category == null )
                 {
                     return NotFound();
                 }
 
-                return Ok(actor);
+                return Ok(category);
             }
             catch (Exception ex)
             {

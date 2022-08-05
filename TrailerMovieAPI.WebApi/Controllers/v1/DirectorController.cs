@@ -20,18 +20,18 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DirectorResponse))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetActorAsync() {
+        public async Task<IActionResult> GetDirectorAsync() {
 
             try
             {
-                var actor = await _directorServices.GetAllViewModel();
+                var director = await _directorServices.GetAllViewModel();
 
-                if (actor == null || actor.Count == 0)
+                if (director == null || director.Count == 0)
                 {
                     return NotFound();
                 }
 
-                return Ok(actor);
+                return Ok(director);
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
                     return BadRequest();
                 }
 
-                var actor = await _directorServices.Add(request);
+                await _directorServices.Add(request);
 
                 return NoContent();
             }
@@ -90,7 +90,7 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
 
         }
 
-        [HttpPut("Delete/{id}")]
+        [HttpDelete("Delete/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Delete(int id) {
@@ -118,14 +118,14 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
 
             try
             {
-                var actor = await _directorServices.GetByIdSaveViewModel(id);
+                var director = await _directorServices.GetByIdSaveViewModel(id);
 
-                if (actor == null )
+                if (director == null )
                 {
                     return NotFound();
                 }
 
-                return Ok(actor);
+                return Ok(director);
             }
             catch (Exception ex)
             {
