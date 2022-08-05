@@ -9,10 +9,15 @@ namespace TrailerMovieAPI.WebApi.Extensions
             application.UseSwagger();
             application.UseSwaggerUI(options => {
 
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Restaurant API");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Trailer Movie API");
                 
             });
-        
+
+            application.UseCors(x => x
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowed(origin=>true)
+            .AllowCredentials());
         }
     }
 }

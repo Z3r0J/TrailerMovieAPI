@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrailerMovieAPI.Core.Application.ViewModel.User;
+using TrailerMovieAPI.Core.Application.DTOS.Actor;
 
 namespace TrailerMovieAPI.Core.Application.Mapping
 {
@@ -17,6 +18,22 @@ namespace TrailerMovieAPI.Core.Application.Mapping
         {
             CreateMap<LoginViewModel, AuthenticationRequest>().ReverseMap();
             CreateMap<SaveUserViewModel, RegisterRequest>().ReverseMap();
+
+            CreateMap<Actor, ActorResponse>()
+                .ReverseMap()
+                .ForMember(x => x.Created, opt => opt.Ignore())
+                .ForMember(x => x.Modified, opt => opt.Ignore())
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.ModifiedBy, opt => opt.Ignore())
+                .ForMember(x => x.Movies, opt => opt.Ignore());
+
+            CreateMap<Actor, RegisterActorRequest>()
+                .ReverseMap()
+                .ForMember(x => x.Created, opt => opt.Ignore())
+                .ForMember(x => x.Modified, opt => opt.Ignore())
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.ModifiedBy, opt => opt.Ignore())
+                .ForMember(x => x.Movies, opt => opt.Ignore());
 
         }
     }
