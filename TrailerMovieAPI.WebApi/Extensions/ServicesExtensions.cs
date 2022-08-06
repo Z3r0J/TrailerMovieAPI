@@ -21,10 +21,10 @@ namespace TrailerMovieAPI.WebApi.Extensions
                 options.SwaggerDoc("v1", new OpenApiInfo { 
                 
                     Version="v1",
-                    Title = "Restaurant API",
-                    Description = "This API is created for services using in a Restaurant.",
+                    Title = "Trailer Movie API",
+                    Description = "This API is created to consume in React APP",
                     Contact = new OpenApiContact { 
-                    Name = "Jean Carlos Reyes",
+                    Name = "Jean Carlos Reyes & Johanly Baez",
                     Email = "jeanrey.ese@gmail.com",
                     Url = new Uri("https://github.com/z3r0j")
                     }

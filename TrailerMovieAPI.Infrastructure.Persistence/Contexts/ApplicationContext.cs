@@ -80,7 +80,8 @@ namespace TrailerMovieAPI.Infrastructure.Persistence.Contexts
             builder.Entity<MovieActor>()
                 .HasOne(x => x.Movie)
                 .WithMany(x => x.Actors)
-                .HasForeignKey(x => x.MovieId);
+                .HasForeignKey(x => x.MovieId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<MovieActor>()
                 .HasOne(x => x.Actor)
@@ -90,7 +91,8 @@ namespace TrailerMovieAPI.Infrastructure.Persistence.Contexts
             builder.Entity<MovieDirector>()
                 .HasOne(x => x.Movie)
                 .WithMany(x => x.Directors)
-                .HasForeignKey(x => x.MovieId);
+                .HasForeignKey(x => x.MovieId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<MovieDirector>()
                 .HasOne(x => x.Director)

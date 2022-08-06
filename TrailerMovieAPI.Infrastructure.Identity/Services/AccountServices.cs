@@ -72,6 +72,7 @@ namespace TrailerMovieAPI.Infrastructure.Identity.Services
             response.Email = user.Email;
             response.UserName = user.UserName;
             response.Phone = user.PhoneNumber;
+            response.HasError = false;
 
             var RoleList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
 
