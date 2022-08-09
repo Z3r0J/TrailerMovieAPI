@@ -8,6 +8,7 @@ using TrailerMovieAPI.Core.Application.Interfaces.Services;
 namespace TrailerMovieAPI.WebApi.Controllers.v1
 {
     [ApiVersion("1.0")]
+    [Authorize(Roles = "ADMINISTRATOR")]
     public class DirectorController : BaseAPIController
     {
         private readonly IDirectorServices _directorServices;

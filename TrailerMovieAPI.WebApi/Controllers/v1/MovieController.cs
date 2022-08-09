@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -115,6 +116,7 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
             }
         }
 
+        [Authorize(Roles = "ADMINISTRATOR")]
         [HttpPost("Create")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -157,6 +159,7 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
 
         }
 
+        [Authorize(Roles = "ADMINISTRATOR")]
         [HttpPut("Update/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -208,6 +211,26 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
                 }
 
                 await _movieServices.Update(request, id);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
+        }
+
+        [Authorize(Roles = "ADMINISTRATOR")]
+        [HttpDelete("Delete/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Delete(int id)
+        {
+
+            try
+            {
+                await _movieServices.Delete(id);
 
                 return NoContent();
             }
