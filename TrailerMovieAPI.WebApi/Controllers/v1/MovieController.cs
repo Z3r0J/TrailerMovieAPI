@@ -116,7 +116,6 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
             }
         }
 
-        [Authorize(Roles = "ADMINISTRATOR")]
         [HttpPost("Create")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -159,7 +158,6 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
 
         }
 
-        [Authorize(Roles = "ADMINISTRATOR")]
         [HttpPut("Update/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -221,7 +219,6 @@ namespace TrailerMovieAPI.WebApi.Controllers.v1
 
         }
 
-        [Authorize(Roles = "ADMINISTRATOR")]
         [HttpDelete("Delete/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
