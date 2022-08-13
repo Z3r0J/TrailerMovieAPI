@@ -21,6 +21,8 @@ namespace TrailerMovieAPI.WebApi
 {
     public class Startup
     {
+
+        private readonly string _MyCors = "CORS";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -42,6 +44,15 @@ namespace TrailerMovieAPI.WebApi
 
             services.AddDistributedMemoryCache();
             services.AddSession();
+            services.AddCors(options => {
+                options.AddPolicy(name: _MyCors, builder => {
+
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                });
+            
+            });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
@@ -69,6 +80,7 @@ namespace TrailerMovieAPI.WebApi
             app.UseSwaggerExtension();
             app.UseHealthChecks("/health");
             app.UseSession();
+            app.UseCors(_MyCors);
 
             app.UseEndpoints(endpoints =>
             {

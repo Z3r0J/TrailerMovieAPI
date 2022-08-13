@@ -9,7 +9,6 @@ using TrailerMovieAPI.Core.Application.Interfaces.Services;
 namespace TrailerMovieAPI.WebApi.Controllers.v1
 {
     [ApiVersion("1.0")]
-    [Authorize(Roles = "ADMINISTRATOR")]
     public class ActorController : BaseAPIController
     {
         private readonly IActorServices _actorServices;

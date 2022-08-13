@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -8,7 +9,6 @@ using TrailerMovieAPI.Core.Application.Interfaces.Services;
 namespace TrailerMovieAPI.WebApi.Controllers.v1
 {
     [ApiVersion("1.0")]
-    [Authorize(Roles = "ADMINISTRATOR")]
     public class DirectorController : BaseAPIController
     {
         private readonly IDirectorServices _directorServices;
