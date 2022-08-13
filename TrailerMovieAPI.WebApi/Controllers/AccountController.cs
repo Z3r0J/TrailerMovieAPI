@@ -25,7 +25,6 @@ namespace TrailerMovieAPI.WebApi.Controllers
             return Ok(await _accountServices.AuthenticateAsync(request));
         }
 
-        [Authorize(Roles = "ADMINISTRATOR")]
         [HttpPost("register-administrator")]
         public async Task<IActionResult> RegisterAdministratorAsync(RegisterRequest request) {
 
